@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1 class="pull-right">
+        <div class="row">
+            <div class="col-4">
+                <h3>Ejemplares</h3>
+            </div>
+
+            <div class="col-4">
+                <a href="{% url 'ejemplares:createEjemplares' %}" class="btn btn-primary pull-rigth" style = "margin-top: -10px; margin-bottom: 5px">Adicionar</a>
+            </div>       
+            
+        </div>
+        
+    </h1>
+
+
+    <table class="table table-success table-striped">
+        ...
+      </table>
+            {% if ejemplares %}
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">LIBRO</th>
+                        <th scope="col">LOCALIZACIÓN</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+            
+                {% for i in ejemplares %}
+                    <tr>
+                        <td>{{ i.id }}</td>
+                        <td>{{ i.CodigoLibro }}</td>
+                        <td>{{ i.localizacion }}</td>
+                        <td>
+                            <a href="{% url 'ejemplares:updateEjemplares' i.id %}" class="btn btn-primary">Editar</a>
+                            <a href="{% url 'ejemplares:deleteEjemplares' i.id %}" class="btn btn-primary">Eliminar</a>
+                        </td>
+
+                    </tr>
+
+                {% endfor %}
+            {% else %}
+                <h3>No existen registros de Ejemplares</h3>
+            
+            {% endif %}
+        </tbody>
+      </table>
+
+{% endblock %}
