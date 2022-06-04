@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1 class="pull-right">
+        <div class="row">
+            <div class="col-4">
+                <h3>Listado de Escribir</h3>
+            </div>
+
+            <div class="col-4">
+                <a href="{% url 'escribir:createEscribir' %}" class="btn btn-primary pull-rigth" style = "margin-top: -10px; margin-bottom: 5px">Adicionar</a>
+            </div>       
+            
+        </div>
+        
+    </h1>
+
+
+    <table class="table table-success table-striped">
+        ...
+      </table>
+            {% if usuarios %}
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">FECHA</th>
+                        <th scope="col">AUTOR</th>
+                        <th scope="col">LIBRO</th>
+                        <th scope="col">ACCION</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+            
+                {% for i in escribir %}
+                    <tr>
+                        <td>{{ i.fecha }}</td>
+                        <td>{{ i.CodigoAutor }}</td>
+                        <td>{{ i.CodigoLibro }}</td>
+                        <td>
+                        <a href="{% url 'escribir:updateEscribir' i.id %}" class="btn btn-primary">Editar</a>
+                        <a href="{% url 'escribir:deleteEscribir' i.id %}" class="btn btn-primary">Eliminar</a>
+                        </td>
+
+                    </tr>
+
+                {% endfor %}
+            {% else %}
+                <h3>No existen registros de Escribir</h3>
+            
+            {% endif %}
+        </tbody>
+      </table>
+
+{% endblock %}

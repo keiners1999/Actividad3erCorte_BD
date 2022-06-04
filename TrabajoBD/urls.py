@@ -22,4 +22,5 @@ urlpatterns = [
     path('prestar/', include(('apps.ejemplares.urls'), namespace= 'prestar')),
     path('ejemplares/', include(('apps.ejemplares.urls'), namespace= 'ejemplares')),
     path('libros/', include(('apps.libros.urls'), namespace= 'libros')),
+    path('escribir/', include(('apps.libros.urls'), namespace= 'escribir')),
 ]
