@@ -32,8 +32,8 @@ def updatePrestar(request,id):
     return render(request, 'prestar/formPrestar.html', {'form': form})
 
 def deletePrestar(request, id):
-    usuario = Prestar.objects.get(id=id)
-    usuario.delete()
+    prestar = Prestar.objects.get(id=id)
+    prestar.delete()
     return redirect('prestar:listPrestar')
 
 
