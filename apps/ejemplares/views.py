@@ -53,17 +53,17 @@ def createEjemplares(request):
     return render(request, 'ejemplares/formEjemplares.html', {'form': form})
 
 def updateEjemplares(request,id):
-    prestar = Prestar.objects.get(id=id)
+    prestar = Ejemplares.objects.get(id=id)
     if request.method == 'GET':
-        form = PrestarForm(instance=prestar)
+        form = EjemplaresForm(instance=prestar)
     else:
-        form = PrestarForm(request.POST, instance=prestar)
+        form = EjemplaresForm(request.POST, instance=prestar)
         if form.is_valid():
             form.save()
-            return redirect('prestar:listPrestar')
-    return render(request, 'prestar/formPrestar.html', {'form': form})
+            return redirect('ejemplares:listEjemplares')
+    return render(request, 'ejemplares/formEjemplares.html', {'form': form})
 
 def deleteEjemplares(request, id):
-    usuario = Prestar.objects.get(id=id)
+    usuario = Ejemplares.objects.get(id=id)
     usuario.delete()
-    return redirect('prestar:listPrestar')
+    return redirect('ejemplares:listEjemplares')
