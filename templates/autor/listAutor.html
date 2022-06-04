@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1 class="pull-right">
+        <div class="row">
+            <div class="col-4">
+                <h3>Autor</h3>
+            </div>
+
+            <div class="col-4">
+                <a href="{% url 'autor:createAutor' %}" class="btn btn-primary pull-rigth" style = "margin-top: -10px; margin-bottom: 5px">Adicionar</a>
+            </div>       
+            
+        </div>
+        
+    </h1>
+
+
+    <table class="table table-success table-striped">
+        ...
+      </table>
+            {% if autor %}
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">NOMBRE</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+            
+                {% for i in autor %}
+                    <tr>
+                        <td>{{ i.id }}</td>
+                        <td>{{ i.nombre }}</td>
+                        <td>
+                            <a href="{% url 'autor:updateAutor' i.id %}" class="btn btn-primary">Editar</a>
+                            <a href="{% url 'autor:deleteAutor' i.id %}" class="btn btn-primary">Eliminar</a>
+                        </td>
+
+                    </tr>
+
+                {% endfor %}
+            {% else %}
+                <h3>No existen registros de Autores</h3>
+            
+            {% endif %}
+        </tbody>
+      </table>
+
+{% endblock %}

@@ -20,15 +20,15 @@
     <table class="table table-success table-striped">
         ...
       </table>
-            {% if usuarios %}
+            {% if prestar %}
                 <table class="table">
                     <thead>
                     <tr>
                         <th scope="col">ID</th>
+                        <th scope="col">USUARIO</th>
+                        <th scope="col">EJEMPLAR</th>
                         <th scope="col">FECHA DE DEVOLUCION</th>
                         <th scope="col">FECHA DE PRESTAMO</th>
-                        <th scope="col">EJEMPLAR</th>
-                        <th scope="col">USUARIO</th>
                         <th scope="col">ACCION</th>
 
                         
@@ -37,13 +37,13 @@
                     </thead>
                     <tbody>
             
-                {% for i in usuarios %}
+                {% for i in prestar %}
                     <tr>
                         <td>{{ i.id }}</td>
+                        <td>{{ i.Usuario }}</td>
+                        <td>{{ i.Ejemplar }}</td>
                         <td>{{ i.fechaDevolucion }}</td>
                         <td>{{ i.fechaPrestamo }}</td>
-                        <td>{{ i.Ejemplar_id }}</td>
-                        <td>{{ i.Usuario_id }}</td>
                         <td>
                             <a href="{% url 'prestar:updatePrestar' i.id %}" class="btn btn-primary">Editar</a>
                             <a href="{% url 'prestar:deletePrestar' i.id %}" class="btn btn-primary">Eliminar</a>

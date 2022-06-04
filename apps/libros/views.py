@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
+from apps.libros.autorForm import AutorForm
 from apps.libros.escribirForm import EscribirForm
 
-from apps.libros.models import Escribir, Libro
+from apps.libros.models import Autor, Escribir, Libro
 from apps.libros.librosForm import LibrosForm
 
 # Create your views here.
@@ -66,3 +67,34 @@ def deleteEscribir(request, id):
     escribir = Escribir.objects.get(id=id)
     escribir.delete()
     return redirect('escribir:listEscribir')
+
+##########################AUTOR#################
+def listAutor(request):
+    autor = Autor.objects.all().order_by('id')
+    return render (request, 'autor/listAutor.html', {'autor':autor})
+
+def createAutor(request):
+    if request.method == 'POST':
+        form = AutorForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('autor:listAutor') 
+    else:
+        form = AutorForm()
+    return render(request, 'autor/formAutor.html', {'form': form})
+
+def updateAutor(request,id):
+    autor = Autor.objects.get(id=id)
+    if request.method == 'GET':
+        form = AutorForm(instance=autor)
+    else:
+        form = AutorForm(request.POST, instance=autor)
+        if form.is_valid():
+            form.save()
+            return redirect('autor:listAutor')
+    return render(request, 'autor/formAutor.html', {'form': form})
+
+def deleteAutor(request, id):
+    autor = Autor.objects.get(id=id)
+    autor.delete()
+    return redirect('autor:listAutor')

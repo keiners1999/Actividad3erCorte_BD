@@ -10,7 +10,7 @@ class Ejemplares(models.Model):
     localizacion = models.CharField(max_length=30)
 
     def __str__(self):
-        return self.CodigoLibro
+        return self.CodigoLibro.titulo
     
 
 class Prestar(models.Model):
@@ -18,5 +18,7 @@ class Prestar(models.Model):
     Ejemplar = models.ForeignKey(Ejemplares, on_delete=models.CASCADE)
     fechaDevolucion = models.DateField()
     fechaPrestamo = models.DateField()
+
+    
 
     
