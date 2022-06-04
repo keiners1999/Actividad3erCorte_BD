@@ -50,7 +50,7 @@ def createEscribir(request):
         return redirect('escribir:listEscribir') 
     else:
         form = EscribirForm()
-    return render(request, 'libro/formEscribir.html', {'form': form})
+    return render(request, 'escribir/formEscribir.html', {'form': form})
 
 def updateEscribir(request,id):
     escribir = Escribir.objects.get(id=id)

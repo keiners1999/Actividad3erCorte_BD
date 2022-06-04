@@ -10,7 +10,7 @@ urlpatterns = [
 
     ##########ESCRIBIR#################
     path('listEscribir', views.listEscribir, name= 'listEscribir'),
-    path('createLibro', views.createLibro, name= 'createEscribir'),
+    path('createEscribir', views.createEscribir, name= 'createEscribir'),
     path('updateEscribir/<int:id>', views.updateEscribir, name= 'updateEscribir'),
     path('deleteEscribir/<int:id>', views.deleteEscribir, name= 'deleteEscribir'),
 
